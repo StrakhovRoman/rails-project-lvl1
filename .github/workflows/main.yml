@@ -29,3 +29,6 @@ jobs:
 
     - name: Run Rubocop
       run: make lint
+
+    - name: Run the default task
+      run: bundle exec rake
