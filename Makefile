@@ -10,3 +10,6 @@ lint:
 
 lint-fix:
 	bundle exec rubocop -A
+
+coverage:
+	bundle exec rake
