@@ -33,9 +33,9 @@ jobs:
     - name: Run tests
       run: make tests
     
-    - name: code coverage
+    - name: Test coverage
       uses: paambaati/codeclimate-action@v3.0.0
       env:
-        CC_TEST_REPORTER_ID: 3ea29d5ee73467ec159b9300fbdd666da8062090573583c76cf46cba49d88d22
+        CC_TEST_REPORTER_ID: ${{ secrets.RP1_TEST_ID }}
       with:
         coverageCommand: make tests
