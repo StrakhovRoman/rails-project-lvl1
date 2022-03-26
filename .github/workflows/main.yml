@@ -31,4 +31,4 @@ jobs:
       run: make lint
 
     - name: Run tests
-      run: bundle exec rake
+      run: make tests

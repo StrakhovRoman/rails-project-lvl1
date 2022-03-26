@@ -2,7 +2,7 @@ install:
 	gem install bundler -v 2.3.3
 	bundle install
 
-test:
+tests:
 	bundle exec rake
 
 lint:
