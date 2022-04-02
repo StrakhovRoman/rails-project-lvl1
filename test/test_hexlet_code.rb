@@ -10,7 +10,7 @@ class TestHexletCode < Minitest::Test
 
   def test_single_tag_build # rubocop:disable Metrics/MethodLength
     assert_equal(
-      "<b>",
+      "<br>",
       HexletCode::Tag.build("br")
     )
     assert_equal(
