@@ -1,0 +1,16 @@
+{
+  "Minitest": {
+    "coverage": {
+      "/home/roman/rails-project-lvl1/test/fixtures/user.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      }
+    },
+    "timestamp": 1648920234
+  }
+}
