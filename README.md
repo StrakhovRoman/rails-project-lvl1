@@ -1,6 +1,6 @@
 # Form Generator
 
-Allows to conveniently create forms in site templates
+Create forms in site templates
 ***
 [![CI](https://github.com/StrakhovRoman/rails-project-lvl1/actions/workflows/main.yml/badge.svg)](https://github.com/StrakhovRoman/rails-project-lvl1/actions/workflows/main.yml)
 [![hexlet-check](https://github.com/StrakhovRoman/rails-project-lvl1/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/StrakhovRoman/rails-project-lvl1/actions/workflows/hexlet-check.yml)
