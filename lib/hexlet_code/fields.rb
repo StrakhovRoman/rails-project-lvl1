@@ -18,7 +18,7 @@ module HexletCode
         output << get_html("textarea", cols: 20, rows: 40, name: field, value: value)
       else
         label = Tag.build("label", for: field) { field.capitalize }
-        output << "#{label}\n  #{get_html(name: field, type: "text", value: value)}"
+        output << "#{label}\n  #{get_html(name: field, type: "text", value: value, **options)}"
       end
 
       @fields << output.join
