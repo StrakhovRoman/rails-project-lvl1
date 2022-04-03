@@ -3,9 +3,10 @@
 require_relative "test_helper"
 
 class TestHexletCode < Minitest::Test
+  User = Struct.new(:name, :job, :gender, keyword_init: true)
   def setup
-    @first_user = Fixture::User.new name: "rob", job: "hexlet", gender: "m"
-    @second_user = Fixture::User.new job: "hexlet"
+    @first_user = User.new name: "rob", job: "hexlet", gender: "m"
+    @second_user = User.new job: "hexlet"
   end
 
   def test_single_tag_build # rubocop:disable Metrics/MethodLength

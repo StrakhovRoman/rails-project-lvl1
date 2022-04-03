@@ -5,7 +5,6 @@ require "simplecov"
 SimpleCov.start
 
 require "hexlet_code"
-require_relative "fixtures/user"
 
 require "minitest/autorun"
 
