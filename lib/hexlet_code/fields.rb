@@ -13,13 +13,13 @@ module HexletCode
     def input(field, **options)
       output = []
       value = @user.public_send(field)
+      label = Tag.build("label", for: field) { field.capitalize }
 
-      if options[:as] == :text
-        output << get_html("textarea", cols: 20, rows: 40, name: field, value: value)
-      else
-        label = Tag.build("label", for: field) { field.capitalize }
-        output << "#{label}\n  #{get_html(name: field, type: "text", value: value, **options)}"
-      end
+      output << if options[:as] == :text
+                  "#{label}\n  #{get_html("textarea", cols: 20, rows: 40, name: field, value: value)}"
+                else
+                  "#{label}\n  #{get_html(name: field, type: "text", value: value, **options)}"
+                end
 
       @fields << output.join
     end
