@@ -16,7 +16,8 @@ module HexletCode
       label = Tag.build("label", for: field) { field.capitalize }
 
       output << if options[:as] == :text
-                  "#{label}\n  #{get_html("textarea", cols: 20, rows: 40, name: field, value: value)}"
+                  textarea = { cols: 20, rows: 40, name: field, value: value }.merge(**options).except(:as)
+                  "#{label}\n  #{get_html("textarea", **textarea)}"
                 else
                   "#{label}\n  #{get_html(name: field, type: "text", value: value, **options)}"
                 end
