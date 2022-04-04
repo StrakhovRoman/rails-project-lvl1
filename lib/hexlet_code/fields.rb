@@ -10,7 +10,9 @@ module HexletCode
       @fields = []
     end
 
-    def input(field, **options) # rubocop:disable Metrics/MethodLength
+    # rubocop:disable Metrics/MethodLength
+
+    def input(field, **options)
       output = []
       value = @user.public_send(field)
       label = Tag.build('label', for: field) { field.capitalize }
@@ -18,26 +20,20 @@ module HexletCode
       output << if options[:as] == :text
                   options = options.except(:as)
                   html_as_text = get_html(
-                    'textarea',
-                    cols: 20,
-                    rows: 40,
-                    name: field,
-                    value: value,
-                    **options
+                    'textarea', cols: 20, rows: 40, name: field, value: value, **options
                   )
                   "#{label}\n  #{html_as_text}"
                 else
                   html = get_html(
-                    name: field,
-                    type: 'text',
-                    value: value,
-                    **options
+                    name: field, type: 'text', value: value, **options
                   )
                   "#{label}\n  #{html}"
                 end
 
       @fields << output.join
     end
+
+    # rubocop:enable Metrics/MethodLength
 
     def submit(buttom_name = 'Save')
       @fields << get_html(name: 'commit', type: 'submit', value: buttom_name)
