@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "tag"
+require_relative 'tag'
 
 module HexletCode
   # Fields class
@@ -13,12 +13,12 @@ module HexletCode
     def input(field, **options) # rubocop:disable Metrics/MethodLength
       output = []
       value = @user.public_send(field)
-      label = Tag.build("label", for: field) { field.capitalize }
+      label = Tag.build('label', for: field) { field.capitalize }
 
       output << if options[:as] == :text
                   options = options.except(:as)
                   html_as_text = get_html(
-                    "textarea",
+                    'textarea',
                     cols: 20,
                     rows: 40,
                     name: field,
@@ -29,7 +29,7 @@ module HexletCode
                 else
                   html = get_html(
                     name: field,
-                    type: "text",
+                    type: 'text',
                     value: value,
                     **options
                   )
@@ -39,13 +39,13 @@ module HexletCode
       @fields << output.join
     end
 
-    def submit(buttom_name = "Save")
-      @fields << get_html(name: "commit", type: "submit", value: buttom_name)
+    def submit(buttom_name = 'Save')
+      @fields << get_html(name: 'commit', type: 'submit', value: buttom_name)
     end
 
-    def get_html(tag = "input", **attributes)
+    def get_html(tag = 'input', **attributes)
       value = attributes[:value]
-      attributes = attributes.except(:value) if value.nil? || tag == "textarea"
+      attributes = attributes.except(:value) if value.nil? || tag == 'textarea'
       return Tag.build(tag, **attributes) if HexletCode::Tag::SINGLE_TAGS.include?(tag)
 
       Tag.build(tag, **attributes) { value }
