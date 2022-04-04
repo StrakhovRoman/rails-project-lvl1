@@ -9,13 +9,7 @@ class TestHexletCode < Minitest::Test
     @second_user = User.new job: 'hexlet'
   end
 
-  # rubocop:disable Metrics/MethodLength
-
   def test_single_tag_build
-    assert_equal(
-      '<br>',
-      HexletCode::Tag.build('br')
-    )
     assert_equal(
       '<img src="path/to/image">',
       HexletCode::Tag.build('img', src: 'path/to/image')
@@ -25,8 +19,6 @@ class TestHexletCode < Minitest::Test
       HexletCode::Tag.build('input', type: 'submit', value: 'Save')
     )
   end
-
-  # rubocop:enable Metrics/MethodLength
 
   def test_pair_tag_build
     assert_equal(

@@ -10,36 +10,24 @@ module HexletCode
       @fields = []
     end
 
-    # rubocop:disable Metrics/MethodLength
-
     def input(field, **options)
-      output = []
       value = @user.public_send(field)
       label = Tag.build('label', for: field) { field.capitalize }
 
-      output << if options[:as] == :text
-                  options = options.except(:as)
-                  html_as_text = get_html(
-                    'textarea', cols: 20, rows: 40, name: field, value: value, **options
-                  )
-                  "#{label}\n  #{html_as_text}"
-                else
-                  html = get_html(
-                    name: field, type: 'text', value: value, **options
-                  )
-                  "#{label}\n  #{html}"
-                end
-
-      @fields << output.join
+      html = if options[:as] == :text
+               options = options.except(:as)
+               get_html('textarea', cols: 20, rows: 40, name: field, value: value, **options)
+             else
+               get_html('input', name: field, type: 'text', value: value, **options)
+             end
+      @fields << "#{label}\n  #{html}"
     end
-
-    # rubocop:enable Metrics/MethodLength
 
     def submit(buttom_name = 'Save')
-      @fields << get_html(name: 'commit', type: 'submit', value: buttom_name)
+      @fields << get_html('input', name: 'commit', type: 'submit', value: buttom_name)
     end
 
-    def get_html(tag = 'input', **attributes)
+    def get_html(tag, **attributes)
       value = attributes[:value]
       attributes = attributes.except(:value) if value.nil? || tag == 'textarea'
       return Tag.build(tag, **attributes) if HexletCode::Tag::SINGLE_TAGS.include?(tag)
