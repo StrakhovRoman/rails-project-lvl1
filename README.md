@@ -6,7 +6,6 @@
 [![hexlet-check](https://github.com/StrakhovRoman/rails-project-lvl1/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/StrakhovRoman/rails-project-lvl1/actions/workflows/hexlet-check.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2d0b028433e3cc094c78/maintainability)](https://codeclimate.com/github/StrakhovRoman/rails-project-lvl1/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2d0b028433e3cc094c78/test_coverage)](https://codeclimate.com/github/StrakhovRoman/rails-project-lvl1/test_coverage)
-[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop-hq/rubocop)
 ***
 
 ## Installation
