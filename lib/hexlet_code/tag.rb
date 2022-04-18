@@ -17,8 +17,7 @@ module HexletCode
     end
 
     def self.build_attributes_string(options)
-      attributes = []
-      options.each { |key, value| attributes << " #{key}=\"#{value}\"" }
+      attributes = options.map { |key, value| " #{key}=\"#{value}\"" }
       attributes.join
     end
   end
