@@ -6,7 +6,7 @@ module HexletCode
     SINGLE_TAGS = %w[br img input].freeze
 
     def self.build(tag, **options)
-      attributes = get_attr(options)
+      attributes = build_attributes_string(options)
       return "<#{tag}#{attributes}>#{yield}</#{tag}>" if block_given?
 
       if SINGLE_TAGS.include?(tag)
@@ -16,7 +16,7 @@ module HexletCode
       end
     end
 
-    def self.get_attr(options)
+    def self.build_attributes_string(options)
       attributes = []
       options.each { |key, value| attributes << " #{key}=\"#{value}\"" }
       attributes.join
