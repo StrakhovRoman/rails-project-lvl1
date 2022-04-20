@@ -3,16 +3,16 @@
 require_relative '../tag'
 
 module HexletCode
-  # Text input
-  class TextInput
+  # String input
+  class StringInput
     def initialize(name, options)
       @attributes = { name: name, **options.except(:as) }
-      @attributes[:cols] ||= '20'
-      @attributes[:rows] ||= '40'
+      @attributes[:type] = 'text'
     end
 
     def build(value)
-      HexletCode::Tag.build('textarea', **@attributes) { value }
+      @attributes[:value] = value unless value.nil?
+      HexletCode::Tag.build('input', **@attributes)
     end
   end
 end

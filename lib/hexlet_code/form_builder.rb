@@ -4,8 +4,8 @@ require_relative 'tag'
 require_relative 'input'
 
 module HexletCode
-  # Fields class
-  class Fields
+  # Form builder class
+  class FormBuilder
     attr_accessor :output
 
     def initialize(entity)

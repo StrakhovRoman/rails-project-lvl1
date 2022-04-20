@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require_relative 'input_types/simple'
-require_relative 'input_types/textarea'
+require_relative 'input_types/string_input'
+require_relative 'input_types/text_input'
+require 'active_support/inflector'
 
 module HexletCode
   # Input class
@@ -13,13 +14,10 @@ module HexletCode
     end
 
     def select
-      input = case @options[:as]
-              when :text
-                TextInput.new(@name, @options)
-              else
-                SimpleInput.new(@name, @options)
-              end
-      input.build(@value)
+      @options[:as] ||= 'string'
+      input_type = "#{@options[:as]}Input".camelize
+      input_class = "HexletCode::#{input_type}".constantize
+      input_class.new(@name, @options).build(@value)
     end
   end
 end
