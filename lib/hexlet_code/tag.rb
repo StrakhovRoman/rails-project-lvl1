@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module HexletCode
-  # Tag class
+  # Tag builder
   class Tag
     SINGLE_TAGS = %w[br img input].freeze
 
