@@ -14,7 +14,7 @@ module HexletCode
     end
 
     def build(value)
-      HexletCode::Tag.build('textarea', **@attributes) { value }
+      Tag.build('textarea', **@attributes) { value }
     end
   end
 end

@@ -5,7 +5,7 @@ require_relative 'input_types/text_input'
 require 'active_support/inflector'
 
 module HexletCode
-  # Input class
+  # Input selector
   class Input
     def initialize(name, value, options)
       @name = name

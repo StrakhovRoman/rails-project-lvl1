@@ -12,7 +12,7 @@ module HexletCode
 
     def build(value)
       @attributes[:value] = value unless value.nil?
-      HexletCode::Tag.build('input', **@attributes)
+      Tag.build('input', **@attributes)
     end
   end
 end
