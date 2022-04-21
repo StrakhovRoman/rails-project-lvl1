@@ -10,7 +10,7 @@ module HexletCode
   include Output
   def self.form_for(entity, **options)
     address = options[:url] || '#'
-    fields = HexletCode::FormBuilder.new(entity)
+    fields = FormBuilder.new(entity)
     yield fields
     html = Output.format(fields.output)
     Tag.build('form', action: address, method: 'post') { html }
