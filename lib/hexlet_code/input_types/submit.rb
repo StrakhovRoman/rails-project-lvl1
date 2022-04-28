@@ -3,17 +3,19 @@
 require_relative '../tag'
 
 module HexletCode
-  # Submit
-  class Submit
-    def initialize(name, **options)
-      @attributes = { **options }
-      @attributes[:name] = 'commit'
-      @attributes[:type] = 'submit'
-      @attributes[:value] = name
-    end
+  module InputType
+    # Submit
+    class Submit
+      def initialize(name, **options)
+        @attributes = { **options }
+        @attributes[:name] = 'commit'
+        @attributes[:type] = 'submit'
+        @attributes[:value] = name
+      end
 
-    def build
-      Tag.build('input', **@attributes)
+      def build
+        Tag.build('input', **@attributes)
+      end
     end
   end
 end

@@ -1,14 +1,9 @@
 # frozen_string_literal: true
 
-require_relative 'tag'
-require_relative 'input'
-require_relative 'input_types/label'
-require_relative 'input_types/submit'
-
 module HexletCode
-  # Form builder class
+  # Form builder
   class FormBuilder
-    attr_accessor :output
+    attr_reader :output
 
     def initialize(entity)
       @entity = entity
@@ -17,15 +12,11 @@ module HexletCode
 
     def input(field, **options)
       value = @entity.public_send(field)
-      label = Label.new(field)
-      @output << label.build
-      input = Input.new(field, value, options)
-      @output << input.select
+      @output << { name: field, value: value, **options }
     end
 
     def submit(name = 'Save')
-      submit = Submit.new(name)
-      @output << submit.build
+      @output << { type: :submit, name: name }
     end
   end
 end

@@ -3,6 +3,7 @@
 require_relative 'hexlet_code/version'
 require_relative 'hexlet_code/tag'
 require_relative 'hexlet_code/form_builder'
+require_relative 'hexlet_code/data_render'
 require_relative 'hexlet_code/output'
 
 # Main module
@@ -12,7 +13,8 @@ module HexletCode
     address = options[:url] || '#'
     fields = FormBuilder.new(entity)
     yield fields
-    html = Output.format(fields.output)
+    form = DataRender.render(fields.output)
+    html = Output.convert(form)
     Tag.build('form', action: address, method: 'post') { html }
   end
 end

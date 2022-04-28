@@ -3,8 +3,8 @@
 module HexletCode
   # Output module
   module Output
-    def self.format(fields)
-      html = fields.flat_map { |element| ["\n  ", element] }
+    def self.convert(fields)
+      html = fields.flat_map { |item| ["\n  ", item] }
       "#{html.join}\n"
     end
   end
