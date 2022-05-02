@@ -5,11 +5,11 @@ require_relative 'input_types/label'
 require_relative 'input_types/submit'
 
 module HexletCode
-  # Data render
-  module DataRender
+  # Form render module
+  module FormRender
     def self.render(data)
-      data.map! { |item| Render.build(item) }
-      data.flatten
+      fields = data.map { |item| Render.build(item) }.flatten
+      Render.convert_to_html(fields)
     end
 
     # Render
@@ -39,6 +39,11 @@ module HexletCode
         field = new data
         field.select_input_types
         field.output
+      end
+
+      def self.convert_to_html(data)
+        html = data.flat_map { |item| ["\n  ", item] }
+        "#{html.join}\n"
       end
     end
   end
