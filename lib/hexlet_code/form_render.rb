@@ -29,7 +29,7 @@ module HexletCode
           label = InputType::Label.new(@name)
           @output << label.build
           input = InputType::Input.new(@name, @value, @options)
-          @output << input.select
+          @output << input.select_input_type
         end
       end
 

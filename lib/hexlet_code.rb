@@ -7,10 +7,10 @@ require_relative 'hexlet_code/form_render'
 
 module HexletCode
   def self.form_for(entity, **options)
-    address = options[:url] || '#'
-    fields = FormBuilder.new(entity)
-    yield fields
-    html = FormRender.render(fields.output)
-    Tag.build('form', action: address, method: 'post') { html }
+    url = options[:url] || '#'
+    field = FormBuilder.new(entity)
+    yield field
+    html = FormRender.render(field.output)
+    Tag.build('form', action: url, method: 'post') { html }
   end
 end
