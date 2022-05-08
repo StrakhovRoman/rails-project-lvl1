@@ -13,7 +13,7 @@ module HexletCode
         @options = options
       end
 
-      def select_input_type
+      def select_input
         @options[:as] ||= 'string'
         input_type = "#{@options[:as]}Input".camelize
         input_class = "HexletCode::InputType::#{input_type}".constantize
