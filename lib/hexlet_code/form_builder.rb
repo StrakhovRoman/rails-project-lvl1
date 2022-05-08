@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module HexletCode
-  # Form builder
   class FormBuilder
     attr_reader :output
 

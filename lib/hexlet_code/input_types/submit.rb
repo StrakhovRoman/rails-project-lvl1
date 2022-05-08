@@ -4,7 +4,6 @@ require_relative '../tag'
 
 module HexletCode
   module InputType
-    # Submit
     class Submit
       def initialize(name, **options)
         @attributes = { **options }

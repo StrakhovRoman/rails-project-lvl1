@@ -4,7 +4,6 @@ require_relative '../tag'
 
 module HexletCode
   module InputType
-    # Label
     class Label
       def initialize(name, **options)
         @attributes = { **options }

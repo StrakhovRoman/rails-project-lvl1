@@ -6,7 +6,6 @@ require 'active_support/inflector'
 
 module HexletCode
   module InputType
-    # Input
     class Input
       def initialize(name, value, options)
         @name = name

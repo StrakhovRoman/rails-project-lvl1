@@ -5,14 +5,12 @@ require_relative 'input_types/label'
 require_relative 'input_types/submit'
 
 module HexletCode
-  # Form render module
   module FormRender
     def self.render(data)
       fields = data.map { |item| Render.build(item) }.flatten
       Render.convert_to_html(fields)
     end
 
-    # Render
     class Render
       attr_reader :output
 

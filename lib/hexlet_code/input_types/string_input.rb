@@ -4,7 +4,6 @@ require_relative '../tag'
 
 module HexletCode
   module InputType
-    # String input
     class StringInput
       def initialize(name, options)
         @attributes = { name: name, **options.except(:as) }

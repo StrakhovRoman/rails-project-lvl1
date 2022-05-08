@@ -4,7 +4,6 @@ require_relative '../tag'
 
 module HexletCode
   module InputType
-    # Text input
     class TextInput
       COLS = '20'
       ROWS = '40'
