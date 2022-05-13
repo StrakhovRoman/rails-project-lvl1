@@ -7,7 +7,11 @@ require_relative 'input_types/submit'
 module HexletCode
   module FormRender
     def self.render(data)
-      fields = data.map { |item| Render.build(item) }.flatten
+      input = data[:input]
+      submit = data[:submit]
+
+      fields = input.map { |item| Render.build(item) }.flatten
+      fields << Render.new(submit).add_submit_field unless submit.nil?
       Render.convert_to_html(fields)
     end
 
@@ -17,26 +21,25 @@ module HexletCode
       def initialize(data)
         @name = data[:name]
         @value = data[:value]
-        @type = data[:type]
         @options = { **data.except(:name, :value) }
         @output = []
       end
 
-      def select_input_types
-        if @type == :submit
-          @output << InputType::Submit.new(@name).build
-        else
-          label = InputType::Label.new(@name)
-          @output << label.build
-          input = InputType::Input.new(@name, @value, @options)
-          @output << input.select_input
-        end
+      def add_input_field
+        label = InputType::Label.new(@name)
+        @output << label.build
+        input = InputType::Input.new(@name, @value, @options)
+        @output << input.select_input
+      end
+
+      def add_submit_field
+        InputType::Submit.new(@name).build
       end
 
       def self.build(data)
-        field = new data
-        field.select_input_types
-        field.output
+        fields = new data
+        fields.add_input_field
+        fields.output
       end
 
       def self.convert_to_html(data)

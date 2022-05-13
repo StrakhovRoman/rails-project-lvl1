@@ -2,20 +2,20 @@
 
 module HexletCode
   class FormBuilder
-    attr_reader :output
+    attr_reader :fields
 
     def initialize(entity)
       @entity = entity
-      @output = []
+      @fields = { input: [], submit: nil }
     end
 
     def input(field, **options)
       value = @entity.public_send(field)
-      @output << { name: field, value: value, **options }
+      @fields[:input] << { name: field, value: value, **options }
     end
 
     def submit(name = 'Save')
-      @output << { type: :submit, name: name }
+      @fields[:submit] = { name: name }
     end
   end
 end
