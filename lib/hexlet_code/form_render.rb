@@ -1,18 +1,20 @@
 # frozen_string_literal: true
 
-require_relative 'input_types/input'
+require_relative './tag'
+require_relative './submit'
 require_relative 'input_types/label'
-require_relative 'input_types/submit'
+require_relative 'input_types/input'
 
 module HexletCode
   module FormRender
-    def self.render(data)
+    def self.render(data, url)
       input = data[:input]
       submit = data[:submit]
 
       fields = input.map { |item| Render.build(item) }.flatten
       fields << Render.new(submit).add_submit_field unless submit.nil?
-      Render.convert_to_html(fields)
+      html = Render.convert_to_html(fields)
+      Tag.build('form', action: url, method: 'post') { html }
     end
 
     class Render
@@ -33,7 +35,7 @@ module HexletCode
       end
 
       def add_submit_field
-        InputType::Submit.new(@name).build
+        Submit.new(@name).build
       end
 
       def self.build(data)
